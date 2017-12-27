@@ -19,20 +19,25 @@ function RouterConfig({ history,app }) {
     app,
     models: () => [import('./models/system/users')],
     component: () => import(/* webpackChunkName: "Users" */'./routes/system/users/Users'),
-    name:'用户'
+    name:'用户列表'
   });
   const EditUser = dynamic({
     app,
     component: () => import(/* webpackChunkName: "Users" */'./routes/system/users/EditUser'),
     name:'编辑用户'
   });
+  /*const Home = ({ match }) => (  
+	  <div>  
+	     <Route path={`${match.url}/list`} component={Users}/>    
+	     <Route path={`${match.url}/editUser`} component={EditUser}/>
+	 </div>)   */
   return (
     <Router history={history}>
       <Switch>
         <Route breadName="我的车辆" path="/" exact component={IndexPage} />
         <Route breadName="我的车辆" path="/home" component={IndexPage} />
-        <Route breadName="用户" path="/users" component={Users} />
-        <Route breadName="编辑用户" path="/users/editUser" exact component={EditUser} />
+        <Route breadName="用户列表" path="/users" exact component={Users} />
+         <Route breadName="编辑用户" path="/users/editUser" component={EditUser} />
       </Switch>
     </Router>
   );

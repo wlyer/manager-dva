@@ -12,7 +12,7 @@ export default {
   effects: {
   	*fetch({ payload: { pageSize,pageNum,keyWord } }, { call, put }) {
       const { data } = yield call(usersService.fetch, { pageSize,pageNum,keyWord });
-      yield put({ type: 'save', payload: { data } });
+      yield put({ type: 'save', payload: { dd } });
     },
   },
   subscriptions: {

@@ -5,6 +5,7 @@ export default {
 
   state: {
   	collapsed:false,
+  	breadCrumb:[],
   },
 
   subscriptions: {
@@ -16,6 +17,9 @@ export default {
     *fetch({ payload }, { call, put }) {  // eslint-disable-line
       yield put({ type: 'save' });
     },
+    *breadCrumb({ payload:  breadCrumb  }, { call, put }) {
+      yield put({ type: 'save', payload: { breadCrumb } });
+    },
   },
 
   reducers: {
@@ -25,6 +29,7 @@ export default {
     switchSider (state) {
       return { ...state,collapsed:!state.collapsed }
     },
+    
   },
 
 };

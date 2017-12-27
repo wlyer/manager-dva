@@ -5,6 +5,10 @@ import { Button } from 'antd';
 import styles from './Users.css';
 import App from '../../../layouts/App';
 import TableTemplate from '../../../components/TableTemplate';
+const bread = [{
+	key  : 'users',
+	name : '用户列表'
+}]
 class Users extends Component {
 	constructor(props){
 		super(props);
@@ -14,6 +18,11 @@ class Users extends Component {
 		};
 	}
 	componentDidMount(){
+		console.log(bread)
+		this.props.dispatch({
+      type: 'app/breadCrumb',
+      payload:  bread ,
+    });
 		/*const pageSize = 10;
 		const pageNum = 1;
 		this.props.dispatch({

@@ -10,16 +10,15 @@ class Bread extends Component{
 		super(props);
 	}
 	render(){
-		console.log(location)
-		const breadData = ['首页','用户管理'];
+		console.log(this.props.breadCrumb)
 		const bread = data => data.map((item,index) => {
-  		return <Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>;
+  		return <Breadcrumb.Item key={index}>{item.name}</Breadcrumb.Item>;
     });
 		return(
 			<Header className={styles.bread} >
 	        <Breadcrumb>
-				    <Breadcrumb.Item key={1}>首页</Breadcrumb.Item>
-				    <Breadcrumb.Item key={2}>用户管理</Breadcrumb.Item>
+	        	<Breadcrumb.Item key='home'>首页</Breadcrumb.Item>
+				    {bread(this.props.breadCrumb)}
 				  </Breadcrumb>
       </Header>
 		)
@@ -32,6 +31,7 @@ Bread.propTypes = {
 
 function mapStateToProps(state) {
 	return { 
+		breadCrumb : state.app.breadCrumb
 	};
 }
 
